@@ -1,0 +1,105 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-weight: 400;
+  }
+  
+  p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  strong {
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: 24px;
+    letter-spacing: -0.25px;
+    font-weight: 900;
+  }
+  
+  h4 {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 140%;
+    padding-bottom: 10px;
+  }
+  
+  .tile {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 30px;
+  }
+  
+  .tile .title {
+    color: #fff;
+    margin-top: 10px;
+  }
+  
+  .tile img {
+      display: inline;
+      float: left;
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
+      height: 40%;
+      padding: 10px 30px 15px 10px;
+  }
+  
+  .tile.purple, .tile.blue, .tile.red, .tile.orange, .tile.green, .tile.primary {
+    color: #fff;
+  }
+  
+  .tile.purple {
+    background: #5133ab;
+  }
+  
+  .tile.purple:hover {
+    background: #3e2784;
+  }
+  
+  .tile.red {
+    background: #ac193d;
+  }
+  
+  .tile.red:hover {
+    background: #7f132d;
+  }
+  
+  .tile.green {
+    background: #00a600;
+  }
+  
+  .tile.green:hover {
+    background: #007300;
+  }
+  
+  .tile.blue {
+    background: #2672ec;
+  }
+  
+  .tile.blue:hover {
+    background: #125acd;
+  }
+  
+  .tile.orange {
+    background: #dc572e;
+  }
+  
+  .tile.orange:hover {
+    background: #b8431f;
+  }
+  
+  .tile.primary {
+    background: #004a8c;
+    border-radius: 4px;
+  }
+  
+  .tile.primary:hover {
+    background: #00305a;
+  }

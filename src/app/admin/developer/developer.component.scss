@@ -1,0 +1,93 @@
+$z-index-header: 1;
+$z-index-side-nav: 2;
+$z-index-drop-down-menu: 3;
+$z-index-full-screen-modal: 4;
+
+@mixin new-stacking-context {
+  position: relative;
+  z-index: 0;
+}
+
+@mixin shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+li {
+  list-style-type: none;
+}
+
+
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #222222;
+  color: mintcream;
+  @include shadow;
+  z-index: $z-index-header;
+}
+
+main {
+  background: white;
+}
+
+.add-button {
+  margin-left: auto;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  width: 150px;
+  background: white;
+  @include shadow;
+  z-index: $z-index-drop-down-menu;
+  
+  &:before {
+    content: "▲";
+    color: white;
+    position: absolute;
+    top: -17px;
+    right: 10px;
+    font-size: 20px;
+  }
+}
+
+.profile-menu-item {
+  padding: 10px 20px;
+  
+  &:not(:first-child) {
+    border-top: 1px solid lightgrey;
+  }
+}
+
+.product-list-item {
+  padding: 20px;
+  border-top: 1px solid lightgrey;
+  position: relative;
+  
+  &--special {
+    background: honeydew;
+  }
+  
+  &:hover {
+    @include shadow;
+    z-index: 1; // this could be 9999999 and it wouldn't matter. It's contained within .product-list
+  }
+}

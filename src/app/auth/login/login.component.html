@@ -1,0 +1,15 @@
+  <div class="wrapper fadeInDown mt-5">
+    <div id="formContent">
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/images/user_icon.svg" id="icon" alt="User Icon" style="width:20%" />
+      </div>
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" name="loginForm" (ngSubmit)="onSubmit()">
+        <input id="login" class="fadeIn second" formControlName="emailId" name="email-id" placeholder="Email Id" type="email">
+        <input id="password" class="fadeIn third" formControlName="password" name="login" placeholder="password" type="password">
+        <input type="submit" class="fadeIn fourth">
+      </form>
+    </div>
+  </div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

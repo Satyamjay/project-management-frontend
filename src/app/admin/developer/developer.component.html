@@ -1,0 +1,98 @@
+<ng-template #content let-modal>
+    <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create new developer</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body mx-3">
+        <form [formGroup]="addDeveloperForm" (ngSubmit)="addDeveloper(addDeveloperForm.value)">
+            <div class="form-group">
+                <label for="addDevEmail">Email-Id</label>
+                <input type="email" class="form-control" id="addDevEmail" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="addDevFName">First Name</label>
+                <input type="text" class="form-control" id="addDevFName" formControlName="firstName">
+            </div>
+            <div class="form-group">
+                <label for="addDevLName">Last Name</label>
+                <input type="text" class="form-control" id="addDevLName" formControlName="lastName">
+            </div>
+            <div class="form-group">
+                <label for="addDevPassword">Password</label>
+                <input type="password" class="form-control" id="addDevPassword" formControlName="password">
+            </div>
+            <div class="form-group">
+                <label for="addDevEnrollNo">Enrollment No.</label>
+                <input type="text" class="form-control" id="addDevEnrollNo" formControlName="enrollmentNo">
+            </div>
+            <div class="form-group">
+                <label for="addDevSemester">Semester</label>
+                <input type="number" class="form-control" id="addDevSemester" formControlName="semester">
+            </div>
+            <div class="text-center pt-2">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<header>
+    <h1>Developers:</h1>
+    <button type="button" class="add-button btn btn-success btn-sm d-flex justify-content-center align-content-between" (click)="open(content)">
+        <i class="material-icons">add_box</i> Add Developers</button>
+</header>
+
+<div id="accordion">
+    <div class="card" *ngFor="let developer of developersAndTheirForm; index as i" [attr.id]="'developerCard'+developer.developer.id">
+        <div class="card-header" [attr.id]="'heading'+i">
+            <h5 class="mb-0">
+                <button class="btn btn-link btn-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                {{ developer.developer.user.email }}
+                </button>
+                <button class="btn btn-danger btn-sm float-right mt-2" 
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="right"
+                    (confirm)="deleteDeveloper(developer.developer.id, i)"
+                    (cancel)="cancelClicked = true">
+                    <i class="material-icons">delete</i></button>
+            </h5>
+        </div>
+        <div [attr.id]="'collapse'+i" class="collapse hide" [attr.aria-labelledby]="'heading'+i" data-parent="#accordion">
+            <div class="card-body">
+                <form [formGroup]="developer.form" (ngSubmit)="updateDeveloper(developer.form.value, developer.developer.id)">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>FirstName</label>
+                            <input type="text" formControlName="firstName" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>LastName</label>
+                            <input type="text" formControlName="lastName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label >Email</label>
+                            <input type="email" formControlName="email" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Semester</label>
+                            <input type="text" formControlName="semester" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>EnrollmentNo.</label>
+                            <input type="text" formControlName="enrollmentNo" class="form-control">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Developer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
