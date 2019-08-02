@@ -10,7 +10,6 @@ import { AlertService } from 'ngx-alerts';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [AuthService]
 })
 export class LoginComponent {
   

@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { Four04Component } from './four04/four04.component';
 import { LoginComponent } from './auth/login/login.component';
-import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth/auth.guard';
+
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
+    loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule),
+    canLoad: [AuthGuard]
   },
   {
      path: '',
@@ -23,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

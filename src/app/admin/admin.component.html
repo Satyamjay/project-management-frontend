@@ -5,7 +5,8 @@
         <div class="card-body">
           <h5 class="card-title">Developers</h5>
           <p class="card-text">Creates the project and give updates to handler.</p>
-          <a href="#" class="btn btn-primary" (click)="showDevelopers=true; showCards=false">View</a>
+          <!-- <a href="#" class="btn btn-primary" (click)="showDevelopers=true; showCards=false">View</a> -->
+          <a routerLink="./developers" class="btn btn-primary">View</a>
         </div>
       </div>
     </div>
@@ -15,9 +16,12 @@
         <div class="card-body">
           <h5 class="card-title">Project Handlers</h5>
           <p class="card-text">Monitors the developers, and their projects.</p>
-          <a href="#" class="btn btn-primary" (click)="showHandlers=true; showCards=false">View</a>
+          <!-- <a href="#" class="btn btn-primary" (click)="showHandlers=true; showCards=false">View</a> -->
+          <a routerLink="./handlers" class="btn btn-primary">View</a>
         </div>
       </div>
     </div>
 </div>
-<app-developer *ngIf="showDevelopers"></app-developer>
+<router-outlet></router-outlet>
+
+<!-- <app-developer *ngIf="showDevelopers"></app-developer> -->

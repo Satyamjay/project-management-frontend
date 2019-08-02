@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: "https://project-management-rest.herokuapp.com"
-  //apiEndpoint: "http://localhost:8080"
+  //apiEndpoint: "https://project-management-rest.herokuapp.com"
+  apiEndpoint: "http://localhost:8080"
 };
 
 /*

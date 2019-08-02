@@ -37,4 +37,8 @@ export class AuthService {
   isLoggedIn(): boolean{
     return this.authSubject.value;
   }
+
+  isAdmin(): boolean{
+    return this.authSubject.value && localStorage.getItem('ROLE')==='ROLE_ADMIN'
+  }
 }

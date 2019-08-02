@@ -1,0 +1,90 @@
+<ng-template #content let-modal>
+    <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create new handler</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body mx-3">
+        <form [formGroup]="addHandlerForm" (ngSubmit)="addHandler(addHandlerForm.value)">
+            <div class="form-group">
+                <label for="addDevEmail">Email-Id</label>
+                <input type="email" class="form-control" id="addDevEmail" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="addDevFName">First Name</label>
+                <input type="text" class="form-control" id="addDevFName" formControlName="firstName">
+            </div>
+            <div class="form-group">
+                <label for="addDevLName">Last Name</label>
+                <input type="text" class="form-control" id="addDevLName" formControlName="lastName">
+            </div>
+            <div class="form-group">
+                <label for="addDevPassword">Password</label>
+                <input type="password" class="form-control" id="addDevPassword" formControlName="password">
+            </div>
+            <div class="form-group">
+                <label for="addDevEnrollNo">Employee Id</label>
+                <input type="text" class="form-control" id="addDevEnrollNo" formControlName="employeeId">
+            </div>
+            <div class="text-center pt-2">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<header>
+    <h1>Handlers:</h1>
+    <button type="button" class="add-button btn btn-success btn-sm d-flex justify-content-center align-content-between" (click)="open(content)">
+        <i class="material-icons">add_box</i> Add Handlers</button>
+</header>
+
+<div id="accordion">
+    <div class="card" *ngFor="let handler of handlersAndTheirForm; index as i" [attr.id]="'handlerCard'+handler.handler.id">
+        <div class="card-header" [attr.id]="'heading'+i">
+            <h5 class="mb-0">
+                <button class="btn btn-link btn-lg" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                {{ handler.handler.user.email }}
+                </button>
+                <button class="btn btn-danger btn-sm float-right mt-2" 
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="right"
+                    (confirm)="deleteHandler(handler.handler.id, i)"
+                    (cancel)="cancelClicked = true">
+                    <i class="material-icons">delete</i></button>
+            </h5>
+        </div>
+        <div [attr.id]="'collapse'+i" class="collapse hide" [attr.aria-labelledby]="'heading'+i" data-parent="#accordion">
+            <div class="card-body">
+                <form [formGroup]="handler.form" (ngSubmit)="updatehandler(handler.form.value, handler.handler.id)">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>FirstName</label>
+                            <input type="text" formControlName="firstName" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>LastName</label>
+                            <input type="text" formControlName="lastName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label >Email</label>
+                            <input type="email" formControlName="email" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>EmployeeId</label>
+                            <input type="text" formControlName="employeeId" class="form-control">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Handler</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
