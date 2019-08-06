@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { AdminModule } from './admin/admin.module';
 
 import { AuthService } from './auth/auth.service';
+import { DeveloperComponent } from './developer/developer.component';
 
 
 
@@ -28,6 +29,7 @@ import { AuthService } from './auth/auth.service';
     LoginComponent,
     Four04Component,
     HeaderComponent,
+    DeveloperComponent,
   ],
   imports: [
     NgbModule,  
