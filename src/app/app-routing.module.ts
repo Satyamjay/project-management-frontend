@@ -17,6 +17,10 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'developer',
+    loadChildren: () => import('./developer/developer.module').then(mod => mod.DeveloperModule),
+  },
+  {
      path: '',
     redirectTo: '/login',
     pathMatch: 'full'

@@ -18,6 +18,7 @@ import { AdminModule } from './admin/admin.module';
 
 import { AuthService } from './auth/auth.service';
 import { DeveloperComponent } from './developer/developer.component';
+import { DeveloperModule } from './developer/developer.module';
 
 
 
@@ -41,6 +42,7 @@ import { DeveloperComponent } from './developer/developer.component';
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     NgxLoadingModule.forRoot({}),
     AdminModule,
+    DeveloperModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent, HeaderComponent],
