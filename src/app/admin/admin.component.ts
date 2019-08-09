@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -9,7 +8,6 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
 
-  showCards=true;
   constructor() { }
 
   ngOnInit() {

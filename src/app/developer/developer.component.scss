@@ -1,105 +1,93 @@
-body {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-    line-height: 1.5em;
-    font-weight: 400;
+$z-index-header: 1;
+$z-index-side-nav: 2;
+$z-index-drop-down-menu: 3;
+$z-index-full-screen-modal: 4;
+
+@mixin new-stacking-context {
+  position: relative;
+  z-index: 0;
+}
+
+@mixin shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+li {
+  list-style-type: none;
+}
+
+
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #222222;
+  color: mintcream;
+  @include shadow;
+  z-index: $z-index-header;
+}
+
+main {
+  background: white;
+}
+
+.add-button {
+  margin-left: auto;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  width: 150px;
+  background: white;
+  @include shadow;
+  z-index: $z-index-drop-down-menu;
+  
+  &:before {
+    content: "▲";
+    color: white;
+    position: absolute;
+    top: -17px;
+    right: 10px;
+    font-size: 20px;
+  }
+}
+
+.profile-menu-item {
+  padding: 10px 20px;
+  
+  &:not(:first-child) {
+    border-top: 1px solid lightgrey;
+  }
+}
+
+.product-list-item {
+  padding: 20px;
+  border-top: 1px solid lightgrey;
+  position: relative;
+  
+  &--special {
+    background: honeydew;
   }
   
-  p {
-    font-size: 16px;
-    font-weight: 500;
+  &:hover {
+    @include shadow;
+    z-index: 1; // this could be 9999999 and it wouldn't matter. It's contained within .product-list
   }
-  
-  strong {
-    font-weight: 600;
-  }
-  
-  h3 {
-    font-size: 24px;
-    letter-spacing: -0.25px;
-    font-weight: 900;
-  }
-  
-  h4 {
-    font-size: 21px;
-    font-weight: 300;
-    line-height: 140%;
-    padding-bottom: 10px;
-  }
-  
-  .tile {
-    width: 100%;
-    display: inline-block;
-    box-sizing: border-box;
-    background: #fff;
-    padding: 10px 20px 20px 20px;
-    margin-bottom: 30px;
-  }
-  
-  .tile .title {
-    color: #fff;
-    margin-top: 10px;
-  }
-  
-  .tile img {
-      display: inline;
-      float: left;
-      margin-left: auto;
-      margin-right: auto;
-      width: 40%;
-      height: 40%;
-      padding: 10px 30px 15px 10px;
-  }
-  
-  .tile.purple, .tile.blue, .tile.red, .tile.orange, .tile.green, .tile.primary {
-    color: #fff;
-  }
-  
-  .tile.purple {
-    background: #5133ab;
-  }
-  
-  .tile.purple:hover {
-    background: #3e2784;
-  }
-  
-  .tile.red {
-    background: #ac193d;
-  }
-  
-  .tile.red:hover {
-    background: #7f132d;
-  }
-  
-  .tile.green {
-    background: #00a600;
-  }
-  
-  .tile.green:hover {
-    background: #007300;
-  }
-  
-  .tile.blue {
-    background: #2672ec;
-  }
-  
-  .tile.blue:hover {
-    background: #125acd;
-  }
-  
-  .tile.orange {
-    background: #dc572e;
-  }
-  
-  .tile.orange:hover {
-    background: #b8431f;
-  }
-  
-  .tile.primary {
-    background: #004a8c;
-    border-radius: 4px;
-  }
-  
-  .tile.primary:hover {
-    background: #00305a;
-  }
+}

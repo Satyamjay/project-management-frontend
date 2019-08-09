@@ -39,6 +39,10 @@ export class AuthService {
   }
 
   isAdmin(): boolean{
-    return this.authSubject.value && localStorage.getItem('ROLE')==='ROLE_ADMIN'
+    return this.authSubject.value && localStorage.getItem('ROLE')==='ROLE_ADMIN';
+  }
+
+  isDeveloper(): boolean{
+    return this.authSubject.value && localStorage.getItem('ROLE')==='ROLE_DEVELOPER';
   }
 }

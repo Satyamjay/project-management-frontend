@@ -7,13 +7,13 @@ import { AuthService } from './auth.service'
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
+export class AuthGuardDeveloper implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authService.isAdmin())
+    if(this.authService.isDeveloper())
       return true;
     else
     {
@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   canLoad(route: Route): boolean{
-    if(this.authService.isAdmin())
+    if(this.authService.isDeveloper())
       return true;
     else
     {

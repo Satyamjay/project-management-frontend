@@ -17,8 +17,10 @@ import { HeaderComponent } from './header/header.component';
 import { AdminModule } from './admin/admin.module';
 
 import { AuthService } from './auth/auth.service';
-import { DeveloperComponent } from './developer/developer.component';
+//import { DeveloperComponent } from './developer/developer.component';
 import { DeveloperModule } from './developer/developer.module';
+
+//import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 
@@ -30,7 +32,6 @@ import { DeveloperModule } from './developer/developer.module';
     LoginComponent,
     Four04Component,
     HeaderComponent,
-    DeveloperComponent,
   ],
   imports: [
     NgbModule,  
@@ -43,6 +44,7 @@ import { DeveloperModule } from './developer/developer.module';
     NgxLoadingModule.forRoot({}),
     AdminModule,
     DeveloperModule,
+  
   ],
   providers: [AuthService],
   bootstrap: [AppComponent, HeaderComponent],

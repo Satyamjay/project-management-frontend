@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-color: chocolate;
+    background-color: #513155;
 }
+
+.cdk-overlay-connected-position-bounding-box {
+    z-index: 99999 !important;
+  }
+
+  .md-select-menu-container {
+    z-index: 101;
+  }
+
+  .cdk-global-overlay-wrapper, .cdk-overlay-container {
+    z-index: 99999 !important;
+  }
+
+  ng2-dropdown-menu { z-index: 9999!important; .ng2-dropdown-menu { z-index: 9999!important; ng2-menu-item { z-index: 9999!important; } } }
